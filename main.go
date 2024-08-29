@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/jmoiron/sqlx"
 	"github.com/salawatbro/food-delivery-app/configs"
 	"github.com/salawatbro/food-delivery-app/database"
 	"github.com/salawatbro/food-delivery-app/routes"
+	"github.com/salawatbro/food-delivery-app/utils"
 	"log"
 )
 
@@ -15,13 +15,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("Could not connect to the database: %v", err)
 	}
-
-	defer func(db *sqlx.DB) {
-		err = db.Close()
-		if err != nil {
-			log.Fatalf("Could not close the database connection: %v", err)
-		}
-	}(db)
+	utils.SetupCommands(db)
+	defer database.Close(db)
 
 	app := fiber.New()
 

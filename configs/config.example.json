@@ -1,0 +1,20 @@
+{
+  "app": {
+    "port": 3000,
+    "host": "localhost",
+    "name": "test",
+    "version": "1.0.0",
+    "env": "development"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 27017,
+    "name": "test",
+    "user": "",
+    "password": ""
+  },
+  "jwt": {
+    "secret": "secret",
+    "expires_in": "1d"
+  }
+}
